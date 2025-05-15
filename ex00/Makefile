@@ -1,11 +1,11 @@
-NAME = ConversionOfScalarTypes
+NAME = convert
 
 CPP = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -rf
 
-SRCS = src/main.cpp
+SRCS = src/main.cpp src/ScalarConverter.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

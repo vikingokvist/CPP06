@@ -4,7 +4,25 @@
 # include <iostream>
 # include <string>
 # include <sstream>
-#include <cctype>
+# include <exception>
+# include <cctype>
+# include <limits>
+# include <cmath>
+# include <iomanip>
+
+enum DataType {
+
+    TYPE_UNKNOWN,
+    TYPE_CHAR,
+    TYPE_INT,
+    TYPE_FLOAT,
+    TYPE_DOUBLE,
+    TYPE_NAN,
+    TYPE_POS_INF,
+    TYPE_NEG_INF,
+    TYPE_NEG_INFF
+};
+
 
 class ScalarConverter
 {
@@ -14,20 +32,26 @@ class ScalarConverter
         ScalarConverter& operator=(const ScalarConverter& src);
         ~ScalarConverter();
 
+        std::string intToChar(int input);
+        int         strToInt(const std::string& input);
+        int         floatToInt(const std::string &input);
+        void        printConvertedDataTypes(std::string data_src[]);
+        void        parseInput(DataType& data_type, const std::string& input);
+        void        convertFromFloat(const std::string& input, std::string data_strs[]);
+        void        convertFromDouble(const std::string& input, std::string data_strs[]);
+        std::string intToStr(int input, const std::string& original, bool preserve_negative);
+        int         handleConversions(const std::string input, std::string data_strs[], DataType& data_type);
+
+        class ErrorException : public std::exception
+        {
+            public:
+                const char *what() const throw();
+        };
+
     public:
         static void convert(const std::string input);
 
 };
 
-std::string     intToStr(int input);
-int             strToInt(const std::string& input);
-std::string     intToChar(int input);
-int             floatToInt(const std::string &input);
-std::string     floatToDouble(std::string input);
-int             parseInput(std::string& data_type, const std::string& input);
-void            printConvertedDataTypes(std::string data_type, std::string data_src[]);
-bool            isSpecialLiteral(const std::string& input);
-void            handleSpecialLiterals(const std::string input, std::string data_strs[]);
-void            handleConversions(const std::string input, std::string data_strs[], std::string data_type);
 
 #endif

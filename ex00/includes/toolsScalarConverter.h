@@ -1,0 +1,17 @@
+#ifndef TOOLS_SCALAR_CONVERTER_H
+# define TOOLS_SCALAR_CONVERTER_H
+
+enum DataType {
+
+    TYPE_UNKNOWN,
+    TYPE_CHAR,
+    TYPE_INT,
+    TYPE_FLOAT,
+    TYPE_DOUBLE,
+    TYPE_NAN,
+    TYPE_POS_INF,
+    TYPE_NEG_INF,
+    TYPE_NEG_INFF
+};
+
+#endif

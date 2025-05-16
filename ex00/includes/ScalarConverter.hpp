@@ -10,19 +10,7 @@
 # include <cmath>
 # include <iomanip>
 
-enum DataType {
-
-    TYPE_UNKNOWN,
-    TYPE_CHAR,
-    TYPE_INT,
-    TYPE_FLOAT,
-    TYPE_DOUBLE,
-    TYPE_NAN,
-    TYPE_POS_INF,
-    TYPE_NEG_INF,
-    TYPE_NEG_INFF
-};
-
+# include "./toolsScalarConverter.h"
 
 class ScalarConverter
 {

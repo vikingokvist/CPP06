@@ -1,11 +1,11 @@
-NAME = execute
+NAME = identifyRealType
 
 CPP = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -rf
 
-SRCS = src/main.cpp src/Base.cpp
+SRCS = src/main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

@@ -1,18 +1,17 @@
 #ifndef BASE_HPP
-#define BASE_HPP
+# define BASE_HPP
 
-#include <iostream>
-#include <string>
+# include <iostream>
+# include <string>
 
 class Base
 {
-    private:
-
     public:
-        Base();
-        Base(const Base& src);
-        Base& operator=(const Base& src);
-        ~Base();
+        virtual ~Base() {};
 };
+
+Base*   generate(void);
+void    identify(Base* p);
+void    identify(Base& p);
 
 #endif

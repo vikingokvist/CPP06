@@ -27,15 +27,18 @@ void    ScalarConverter::parseInput(DataType& data_type, const std::string& inpu
 
     bool    only_digits = true;
     bool    error = false;
+    int     dots = 0;
     for (int i = 0; input[i]; i++) {
 
+        if (input[i] == '.')
+            dots++;
         if (i == 0 && (input[i] == '+' || input[i] == '-')) 
             continue ;
         if (!(std::isdigit(input[i])))
             only_digits = false;
         if (((data_type == TYPE_FLOAT && input[i + 1])) || (std::isalpha(input[i]) && input[i] != 'f'))
             error = true;
-        else if (input[i] == '.' && input[i + 1] && std::isdigit(input[i + 1]) && input[i - 1] && std::isdigit(input[i - 1]))
+        else if (input[i] == '.' && input[i - 1] && std::isdigit(input[i - 1]))
             data_type = TYPE_DOUBLE;
         else if (input[i] == 'f' && data_type == TYPE_DOUBLE) {
             
@@ -46,7 +49,7 @@ void    ScalarConverter::parseInput(DataType& data_type, const std::string& inpu
     }
     if (only_digits == true)
         data_type = TYPE_INT;
-    if (error == true)
+    if (error == true || dots > 1)
         data_type = TYPE_UNKNOWN;
     if (input == "nan" || input == "nanf")
         data_type = TYPE_NAN;
